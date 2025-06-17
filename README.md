@@ -1,70 +1,12 @@
-# Getting Started with Create React App
+My project focuses on Washington State and the publicly available disaster relief data provided by the Federal Emergency Management Agency (“FEMA”) to further public awareness surrounding weather disasters. My original goal was to focus on the API docs that FEMA has used historically that outline disaster relief locations, particularly in the state of Washington due to their coastal vulnerabilities. I wanted to create an interactive map that would allow users to be alerted if/when a disaster occurred and where these relief locations could be found. However, I ran into a number of roadblocks collecting data from both FEMA and other disaster relief center organizations as their APIs were no longer updated or not publicly available. This led me to utilize the data that was available to me, and I decided to use FEMA’s database that outlined Hazard Mitigation Assistance Projects. This API collects information on various relief projects throughout all fifty states, but I was able to filter to the state of Washington, then later to the individual counties I chose to focus on for the scale of this project. The second API I chose to incorporate is the weather data provided by the US government. I incorporated this as an alert tab that when my interactive regions were clicked (Spokane, Seattle, Yakima, and Olympia) any current weather alerts would be easily seen. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+I have always been interested in tracking public health issues, particularly within the environment, and I was further inspired by hearing about a few Dartmouth seniors in the EARS department on their senior thesis’ about natural disaster impacts. I knew starting with larger regions such as Washington state would yield more data to build a baseline with, but I know more rural areas, such as areas in the Upper Valley, would benefit greatly from more research and awareness projects on environmental impacts. While I know my specific project has its limitations, I would love to work on projects like this that could focus on underrepresented regions and raise awareness about disaster mitigation.
 
-## Available Scripts
+Throughout my time on the WISP team, I became really familiar with design UI/UX tools such as Figma as that was our focus for the first half of our time together. During the spring I was introduced in a more hands on way with the development side, particularly with APIs. I really enjoyed getting to know more about APIs through WISP and seeing the local impact using Dartmouth specific APIs in our project, and I also loved getting to use brand new APIs in this project such as one that used GeoJson feature data rather than the data structures I was more familiar with. Additionally through this project I learned with the help of Stack Overflow how to create an interactive IMG by creating an SVG. By making a React App, I was able to implement some of the development tools I learned through WISP while also learning a few new ones through some online research, which I enjoyed getting the opportunity to explore. 
 
-In the project directory, you can run:
+When I first started thinking about this project a few weeks ago, I had hoped to include other APIs such as News API to incorporate user searches. The goal was that for any hazard mitigation project that would pop up the user could then search for any relevant news articles. However, I found that the API from News API was extremely particularly about key words and phrases for filtering. With more experience using filtering logic, I would have loved to have been able to pick out keywords from the project titles so that a news API such as this one could have made the project more user interactive. With that being said, I would say the biggest challenge I faced during this project was having to step away from the application for so long. Due to my medical leave, finishing my final exams, and then doctors appointments following the end of term I only had a few days to complete this application to get it in as soon as possible. I think this project shows a lot of what I have learned through DALI already, but I hope that it also shows just how much more I want to learn from the lab to continue working on my development skills for more in depth and advanced projects in the future. 
 
-### `npm start`
+Below is the link to my deployment as well as a screenshot of my project:
+https://cccranna.github.io/dali-application/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
