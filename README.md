@@ -9,4 +9,11 @@ When I first started thinking about this project a few weeks ago, I had hoped to
 Below is the link to my deployment as well as a screenshot of my project:
 https://cccranna.github.io/dali-application/
 
+<img width="1511" alt="dali-app-screenshot" src="https://github.com/user-attachments/assets/1e6e59f7-5846-46cd-afc1-9e5fae422bde" />
+
+
+
+
+
+
 
