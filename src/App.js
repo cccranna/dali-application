@@ -7,21 +7,21 @@ function App() {
   const [weatherAlerts, setWeatherAlerts] = useState(null);
 
   // Fetch weather alerts on mount
-  useEffect(() => {
-    const fetchAlerts = async () => {
-      try {
-        const response = await axios.get('https://api.weather.gov/alerts/active/area/WA');
-        const alerts = response.data.features?.map(feature => feature.properties.headline) || [];
-        setWeatherAlerts(alerts);
-      } catch (error) {
-        console.error('error with alerts:', error);
-        setWeatherAlerts([]);
-      }
-    };
-    fetchAlerts();
-  }, []);
+  // useEffect(() => {
+  //   const fetchAlerts = async () => {
+  //     try {
+  //       const response = await axios.get('https://api.weather.gov/alerts/active/area/WA');
+  //       const alerts = response.data.features?.map(feature => feature.properties.headline) || [];
+  //       setWeatherAlerts(alerts);
+  //     } catch (error) {
+  //       console.error('error with alerts:', error);
+  //       setWeatherAlerts([]);
+  //     }
+  //   };
+  //   fetchAlerts();
+  // }, []);
 
-  const handleClick = async (countyName) => {
+  const handleClick = async (countyName, lat, lon) => {
     try {
       const filterString = `state eq 'Washington' and county eq '${countyName}'`;
       const encodedFilter = encodeURIComponent(filterString);
@@ -38,8 +38,20 @@ function App() {
       console.log('Set info:', projectTypes);
     } catch (error) {
       setInfo(['No data available']);
-      console.error('API Error', error);
-    }
+      console.error('API Error', error);}
+
+      try{
+        const weatherResponse = await axios.get(
+          `https://api.weather.gov/alerts/active?point=${lat},${lon}`
+        );
+        const alerts = weatherResponse.data.features?.map(
+          feature => feature.properties.headline
+        ) || [];
+        setWeatherAlerts(alerts);
+      } catch (error) {
+        console.error('weather data error', error);
+      }
+
   };
 
   const closeInfoPanel = () => {
@@ -81,7 +93,7 @@ function App() {
           stroke="red"
           strokeWidth={5}
           cursor="pointer"
-          onClick={() => handleClick('Spokane')}
+          onClick={() => handleClick('Spokane', 47.6588, -117.4260)}
         />
         {/* Seattle (circle) */}
         <circle
@@ -119,7 +131,7 @@ function App() {
             border: '1px solid #ccc',
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
             zIndex: 10,
-            maxWidth: '300px',
+            maxWidth: '3000px',
           }}
         >
           <h4>Project Types:</h4>
