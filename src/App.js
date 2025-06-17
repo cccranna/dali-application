@@ -1,16 +1,38 @@
 import stateImage from './images/washington-state-image.jpg';
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function App() {
   const [info, setInfo] = useState(null);
+  const handleClick = async (countyName) => {
+    try {
+      const filterString = `state eq 'Washington' and county eq '${countyName}'`;
+      const encodedFilter = encodeURIComponent(filterString);
+      const url = `https://www.fema.gov/api/open/v4/HazardMitigationAssistanceProjects?$filter=${encodedFilter}`;
+  
+      const response = await axios.get(url);
+      
+      console.log('Response data:', response.data);
 
-  const handleClick = (name) => {
-    setInfo(name);
+      const projects = response.data.HazardMitigationAssistanceProjects || [];
+      const projectTypes = projects.map(project => project.projectType);
+       
+      setInfo(projectTypes);
+      console.log('Set info:', projectTypes);
+    } catch (error) {
+      setInfo(['No data available']);
+      console.error('API Error', error);
+    }
   };
+  
+
+  
 
   const closeInfoPanel = () => {
-    setInfo(null);
-  };
+    setInfo(null);};
+
+    console.log('info state:', info);
+
 
   return (
     <div style={{ position: 'relative', width: '100%' }}>
@@ -21,7 +43,7 @@ function App() {
       />
       <svg
         style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-        viewBox="0 0 540 360" // adjust these to your image's natural width and height
+        viewBox="0 0 540 360"
       >
         {/* Olympia (rect) */}
         <rect
@@ -33,7 +55,7 @@ function App() {
           stroke="red"
           strokeWidth={3}
           cursor="pointer"
-          onClick={() => handleClick('Olympia')}
+          onClick={() => handleClick('Thurston')}/*hard code olympia's county as thurston */
         />
         {/* Spokane (circle) */}
         <circle
@@ -55,7 +77,7 @@ function App() {
           stroke="red"
           strokeWidth={5}
           cursor="pointer"
-          onClick={() => handleClick('Seattle')}
+          onClick={() => handleClick('King')} /*seattle in king */
         />
         {/* Yakima (circle) */}
         <circle
@@ -66,7 +88,7 @@ function App() {
           stroke="red"
           strokeWidth={5}
           cursor="pointer"
-          onClick={() => handleClick('Yakima')}
+          onClick={() => handleClick("Yakima")}
         />
       </svg>
 
@@ -83,7 +105,12 @@ function App() {
             zIndex: 10,
           }}
         >
-          <p>{info}</p>
+                <h4>Project Types:</h4>
+          <ul style={{ paddingLeft: '20px' }}>
+            {info.map((type, index) => (
+              <li key={index}>{type}</li>
+            ))}
+          </ul>
           <button onClick={closeInfoPanel}>Close</button>
         </div>
       )}
